@@ -5,9 +5,9 @@ var moon = [];
 
 function setup() {
   createCanvas(600, 600);
-  
+
   for (var j = 0; j < 1; j++)
-  moon[j] = new Moon(300, 700, 30, 255, 1);
+    moon[j] = new Moon(300, 700, 30, 255, 1);
 
   for (var i = 0; i < 30; i++) {
     asteroids[i] = new Asteroid(random(250, 300), random(250, 300), random(100, 270), random(-3, 3), random(0, 360), random(20, 50), random(50, 200));
@@ -18,9 +18,10 @@ function setup() {
 function draw() {
   background(0);
 
-for (var j=0; j < moon.length; j++){
-  moon[j].display();
-}
+  for (var j = 0; j < moon.length; j++) {
+    moon[j].display();
+    moon[j].collide();
+  }
 
   for (var i = 0; i < asteroids.length; i++) {
     asteroids[i].display();
@@ -61,16 +62,16 @@ function Moon(x1, y1, r1, cc1, speed1) {
     ellipse(this.x1, this.y1, this.r1, this.r1);
     this.y1 = this.y1 - speed1;
   }
+  this.collide = function(asteroids[i]) {
+    var collide = dist(this.x1, this.y1, asteroids[i].x, asteroids[i].y);
 
+    if (collide = 0) {
+      text("TOUCHING", 300, 550);
+
+    }
+  }
 }
 
 /*
-  this.collide= function(asteroids[i]) {
-    var collide = dist(this.x, this.y, asteroids[i].x, asteroids[i].y);
-    
-    if (collide = 0) {
-      text("TOUCHING", 300,550);
-      
-    }
-}
+
    */
